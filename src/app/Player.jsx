@@ -49,9 +49,10 @@ export default function Player() {
   let cameraTarget = new THREE.Vector3()
 
   useFrame((state, delta) => {
+     const { forward, backward, leftward, rightward } = getKeys()
     if (forward || backward || leftward || rightward) {
       const camera = cameraControlsRef.current.camera
-      const { forward, backward, leftward, rightward } = getKeys()
+     
       const impulseStrength = 0.6 * delta
       const torqueStrength = 0.2 * delta
       let angleYCameraDirection = Math.atan2(
